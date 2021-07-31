@@ -12,5 +12,6 @@ def main():
     playerShipLeft = 2
     
     battleGround.printMap(AI_Win, playerWin, AI_ShipLeft, playerShipLeft)
+    battleGround.goTo(20, 20, "A")
     
 main()
