@@ -16,7 +16,7 @@ def shipTest():
 import Player as player
 import AI
 
-def playerInput():
+def playerPosXY():
     for i in range(3):
         
         ship1_string = "Ship 1: -"
@@ -75,7 +75,7 @@ def main():
         
         print("Welcome To Battle-Ship War Game\n")
         
-        playerInput()
+        playerPosXY()
         AI_PosXY()
         battleGround.printMap(player.win, player.shipLeft, AI.win, AI.shipLeft)
         
