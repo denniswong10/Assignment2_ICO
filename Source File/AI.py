@@ -3,4 +3,4 @@
 """
 
 win = 0
-shipLeft = 0
+shipLeft = 3
