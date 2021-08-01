@@ -1,9 +1,9 @@
-<<<<<<< Updated upstream
 """
     Make a script that can make a bot to plot ship and fire cannon
 """
-=======
-"""
-    Make a script that can make a bot to plot ship and fire cannon
-"""
->>>>>>> Stashed changes
+
+def ShipPlotToFire():
+    print("Start to fire cannon randomly")
+    
+def MarkPositionOfFire():
+    print("Plot a O when it fire")
