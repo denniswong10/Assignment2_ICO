@@ -18,6 +18,10 @@ playerShip1 = {"Pos":[0, 0]}
 playerShip2 = {"Pos":[0, 0]}
 playerShip3 = {"Pos":[0, 0]}
 
+AI_ship1 = {"Pos":[0, 0]}
+AI_ship2 = {"Pos":[0, 0]}
+AI_ship3 = {"Pos":[0, 0]}
+
 def playerInput():
     for i in range(3):
         
@@ -44,14 +48,37 @@ def playerInput():
         else:
             playerShip3["Pos"][0] = posX
             playerShip3["Pos"][1] = posY
+            
+def AI_PosXY():
+    import random
+    
+    for i in range(3):
         
+        posX = random.randrange(1, 10)
+        posY = random.randrange(1, 10)
+        
+        if (i == 0):
+            AI_ship1["Pos"][0] = posX
+            AI_ship1["Pos"][1] = posY
+        elif(i == 1):
+            AI_ship2["Pos"][0] = posX
+            AI_ship2["Pos"][1] = posY
+        else:
+            AI_ship3["Pos"][0] = posX
+            AI_ship3["Pos"][1] = posY
 
 def main():
+    import BattleGround as battleGround
+    import Player as player
+    import AI
+    
     while True:
         
         print("Welcome To Battle-Ship War Game\n")
         
         playerInput()
+        AI_PosXY()
+        battleGround.printMap(player.win, player.shipLeft, AI.win, AI.shipLeft)
         
         break
     
