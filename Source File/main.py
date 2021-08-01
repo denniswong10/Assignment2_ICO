@@ -2,7 +2,6 @@
     This is the main script where everything are been implemented here and execute it
     Making the game flow by calling function and module
 """
-
 def shipTest():
     # Doesn't Work!
     import Ship as Ship1
@@ -12,15 +11,10 @@ def shipTest():
     Ship1.posX = 4
     print(Ship2.posX) # 4
     print(Ship3.posX) # 4
-
-
-playerShip1 = {"Pos":[0, 0]}
-playerShip2 = {"Pos":[0, 0]}
-playerShip3 = {"Pos":[0, 0]}
-
-AI_ship1 = {"Pos":[0, 0]}
-AI_ship2 = {"Pos":[0, 0]}
-AI_ship3 = {"Pos":[0, 0]}
+    
+    
+import Player as player
+import AI
 
 def playerInput():
     for i in range(3):
@@ -40,39 +34,44 @@ def playerInput():
         posY = input("Place ship " + str(i + 1) + " to (PosY): "); print()
         
         if (i == 0):
-            playerShip1["Pos"][0] = posX
-            playerShip1["Pos"][1] = posY
+            player.playerShip1["Pos"][0] = posX
+            player.playerShip1["Pos"][1] = posY
         elif(i == 1):
-            playerShip2["Pos"][0] = posX
-            playerShip2["Pos"][1] = posY
+            player.playerShip2["Pos"][0] = posX
+            player.playerShip2["Pos"][1] = posY
         else:
-            playerShip3["Pos"][0] = posX
-            playerShip3["Pos"][1] = posY
+            player.playerShip3["Pos"][0] = posX
+            player.playerShip3["Pos"][1] = posY
             
 def AI_PosXY():
     import random
     
+    posX = random.randrange(1, 10)
+    posY = random.randrange(1, 10)
+    
     for i in range(3):
         
-        posX = random.randrange(1, 10)
-        posY = random.randrange(1, 10)
-        
+        for playerShip in (player.playerShips): # Checking if the positions generated are the same as the ones player inputted
+            for index in range(2):
+                while (playerShip["Pos"][index] == posX):
+                    posX = random.randrange(1, 10)
+                while (playerShip["Pos"][index] == posY):
+                    posY = random.randrange(1, 10)
+                    
         if (i == 0):
-            AI_ship1["Pos"][0] = posX
-            AI_ship1["Pos"][1] = posY
+            AI.AI_ship1["Pos"][0] = posX
+            AI.AI_ship1["Pos"][1] = posY
         elif(i == 1):
-            AI_ship2["Pos"][0] = posX
-            AI_ship2["Pos"][1] = posY
+            AI.AI_ship2["Pos"][0] = posX
+            AI.AI_ship2["Pos"][1] = posY
         else:
-            AI_ship3["Pos"][0] = posX
-            AI_ship3["Pos"][1] = posY
+            AI.AI_ship3["Pos"][0] = posX
+            AI.AI_ship3["Pos"][1] = posY
 
 def main():
-    import BattleGround as battleGround
-    import Player as player
-    import AI
-    
     while True:
+        
+        import BattleGround as battleGround
         
         print("Welcome To Battle-Ship War Game\n")
         
