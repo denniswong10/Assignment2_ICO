@@ -77,7 +77,7 @@ def main():
         
         playerPosXY()
         AI_PosXY()
-        battleGround.printMap(player.win, player.shipLeft, AI.win, AI.shipLeft)
+        battleGround.generateMap(player.win, player.shipLeft, AI.win, AI.shipLeft)
         
         break
     
