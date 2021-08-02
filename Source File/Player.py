@@ -65,4 +65,6 @@ def playerShipPosXY(isQuit):
     return isQuit
 
 def playerCannonPosXY(isQuit):
-    print("\n Hello")
+    
+    
+    return isQuit
