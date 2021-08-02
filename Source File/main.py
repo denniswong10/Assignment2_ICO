@@ -7,6 +7,12 @@ import AI
 
 isQuit = False
 
+def comparePos(text):
+    if (text == "S"):
+        print("LOL")
+    else:
+        print("LOL")
+    
 def main():
     global isQuit
     
@@ -20,11 +26,18 @@ def main():
         isQuit = _Quit
         if (isQuit == True): break
         AI.AI_ShipPosXY()
-        battleGround.generateMap()
+        battleGround.generateMap("S") # Generate map with only player's ships plotted
         
-        break
+        _Quit = player.playerCannonPosXY(isQuit)
+        isQuit = _Quit
+        if (isQuit == True): break
+        comparePos("S") # Compare player's ship position with AI's ship
+        battleGround.generateMap("C") # Genearte map with player's ships and cannon plotted
+        AI.AI_CannonPosXY()
+        comparePos("A") # Compare AI's ship position with player's ship
+        battleGround.generateMap("S")
         
     if (player.shipLeft == 0): print("\nYou Lost :(")
-    elif (AI.shipLeft == 0): print("\nYou Won!")
+    else: print("\nYou Won!")
     
 main()
