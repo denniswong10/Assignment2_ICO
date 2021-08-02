@@ -23,10 +23,12 @@ def removeShip(shipStr, shipNum):
         AI.AI_Ships[shipNum] = {"Destroyed":[shipNum + 1]}
         AI.AI_Ships.remove(AI.AI_Ships[shipNum])
         AI.shipLeft -= 1
+        if (AI.shipLeft == 0): player.win += 1
     else:
         player.playerShips[shipNum] = {"Destroyed":[shipNum + 1]}
         player.playerShips.remove(player.playerShips[shipNum])
         player.shipLeft -= 1
+        if (player.shipleft == 0): AI.win += 1
     
 def main():
     import BattleGround as battleGround
