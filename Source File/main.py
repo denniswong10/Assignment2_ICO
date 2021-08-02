@@ -16,10 +16,10 @@ def main():
         
         print("Welcome To Battle-Ship War Game")
         
-        _Quit = player.playerPosXY(isQuit)
+        _Quit = player.playerShipPosXY(isQuit)
         isQuit = _Quit
         if (isQuit == True): break
-        AI.AI_PosXY()
+        AI.AI_ShipPosXY()
         battleGround.generateMap()
         
         break

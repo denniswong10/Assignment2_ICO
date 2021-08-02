@@ -9,7 +9,7 @@ AI_ship3 = {"Pos":[0, 0]}
 win = 0
 shipLeft = 3
 
-def AI_PosXY():
+def AI_ShipPosXY():
     import random
     import Player as player
     
