@@ -105,3 +105,23 @@ def main():
     elif (AI.shipLeft == 0): print("\nYou Won!")
     
 main()
+
+def CheckForShipRemain():
+    'If any of the player remain ship is 0'
+    '   Display win to the player have won'
+    
+    'Otherwise the game will continue'
+    
+'Break loop when any ship remain is 0'
+while (AI.shipLeft != 0 or player.shipLeft != 0):
+    'Call the player cannon fire first and check for ship remain'
+    CheckForShipRemain()
+    'Call the AI cannon fire then go back to ship remain'
+    CheckForShipRemain()
+    
+'Display win message!'
+if (AI.shipLeft == 0): 
+    print("Player Win!")
+    
+elif (player.shipLeft == 0): 
+    print("AI Win!")
