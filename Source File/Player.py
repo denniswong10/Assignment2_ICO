@@ -20,14 +20,14 @@ def playerShipPosXY(isQuit):
         print("\n<Press 'q' to exit>")
         
         if (i == 0): 
-            ship1_string = "> Ship 1: <"
+            ship1_string = "\n> Ship 1: <"
         elif (i == 1):
-            ship1_string = "Ship 1: (" + str(playerShip1["Pos"][0]) + ", " + str(playerShip1["Pos"][1]) + ")"
-            ship2_string = "> Ship 2: <"
+            ship1_string = "\nShip 1: (" + str(playerShip1["Pos"][0]) + ", " + str(playerShip1["Pos"][1]) + ")"
+            ship2_string = "\n> Ship 2: <"
         else:
-            ship1_string = "Ship 1: (" + str(playerShip1["Pos"][0]) + ", " + str(playerShip1["Pos"][1]) + ")"
-            ship2_string = "Ship 1: (" + str(playerShip2["Pos"][0]) + ", " + str(playerShip2["Pos"][1]) + ")"
-            ship3_string = "> Ship 3: <"
+            ship1_string = "\nShip 1: (" + str(playerShip1["Pos"][0]) + ", " + str(playerShip1["Pos"][1]) + ")"
+            ship2_string = "\nShip 1: (" + str(playerShip2["Pos"][0]) + ", " + str(playerShip2["Pos"][1]) + ")"
+            ship3_string = "\n> Ship 3: <"
         
         print("\n" + ship1_string + "\n\n" + ship2_string + "\n\n" + ship3_string)
         print("\nBattlefield Size (9x9) -> Please enter between 1 to 9")
@@ -66,5 +66,39 @@ def playerShipPosXY(isQuit):
 
 def playerCannonPosXY(isQuit):
     
+    print("\n<Press 'q' to exit>")
     
-    return isQuit
+    validValue = False
+    while (validValue == False):
+        shipNum = input("\nEnter ship number: ")
+        if (shipNum.lower() == "q"): isQuit = True; break
+        if (not shipNum.isdecimal()): print("\nInvalid Input!"); continue
+        if (not (1 <= int(float(shipNum)) <= 3)): print("\nInvalid Input!"); continue
+        validValue = True
+    if (isQuit == False): shipNum = int(float(shipNum))
+    if (isQuit == True): return isQuit, shipNum
+    
+    validValue = False
+    while (validValue == False):
+        posX = input("\nPlace cannon to (PosX): ")
+        if (posX.lower() == "q"): isQuit = True; break
+        if (not posX.isdecimal()): print("\nInvalid Input!"); continue
+        if (not (1 <= int(float(posX)) <= 9)): print("\nInvalid Input!"); continue
+        validValue = True
+    if (isQuit == False): posX = int(float(posX))
+    if (isQuit == True): return isQuit, shipNum
+    
+    validValue = False    
+    while (validValue == False):
+        posY = input("\nPlace cannon to (PosY): ")
+        if (posY.lower() == "q"): isQuit = True; break
+        if (not posY.isdecimal()): print("\nInvalid Input!"); continue
+        if (not (1 <= int(float(posY)) <= 9)): print("\nInvalid Input!"); continue
+        validValue = True
+    if (isQuit == False): posY = int(float(posY))
+    if (isQuit == True): return isQuit, shipNum
+    
+    playerShips[shipNum - 1]["Can"][0] = posX
+    playerShips[shipNum - 1]["Can"][1] = posY
+    
+    return isQuit, shipNum

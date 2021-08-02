@@ -5,31 +5,44 @@
 import Player as player
 import AI
 
-playerWin = player.win
-AI_Win = AI.win
-playerShipLeft = player.shipLeft
-AI_ShipLeft = AI.shipLeft
-
-def plotPlayerShip(text):
-    ship1_SpaceCount = (player.playerShip1["Pos"][0] * 5) - 3
-    ship2_SpaceCount = (player.playerShip2["Pos"][0] * 5) - 3
-    ship3_SpaceCount = (player.playerShip3["Pos"][0] * 5) - 3
-            
-    for i in range(9):
-        if ((i + 1) == player.playerShip1["Pos"][1]): print("\n" + str(i + 1) + "|" + (" " * ship1_SpaceCount) + text + (" " * (45 - ship1_SpaceCount - 1)) + "|" + str(i + 1), end = (("    Ship Left: " + ((str(AI_ShipLeft)) if (i == 0) else str(playerShipLeft))) if ((i == 0) or (i == 8)) else ""))
-        elif ((i + 1) == player.playerShip2["Pos"][1]): print("\n" + str(i + 1) + "|" + (" " * ship2_SpaceCount) + text + (" " * (45 - ship2_SpaceCount - 1)) + "|" + str(i + 1), end = (("    Ship Left: " + ((str(AI_ShipLeft)) if (i == 0) else str(playerShipLeft))) if ((i == 0) or (i == 8)) else ""))
-        elif ((i + 1) == player.playerShip3["Pos"][1]): print("\n" + str(i + 1) + "|" + (" " * ship3_SpaceCount) + text + (" " * (45 - ship3_SpaceCount - 1)) + "|" + str(i + 1), end = (("    Ship Left: " + ((str(AI_ShipLeft)) if (i == 0) else str(playerShipLeft))) if ((i == 0) or (i == 8)) else ""))
-        else: print("\n" + str(i + 1) + "|" + (" " * 45) + "|" + str(i + 1), end = (("    Ship Left: " + ((str(AI_ShipLeft)) if (i == 0) else str(playerShipLeft))) if ((i == 0) or (i == 8)) else ""))
-        print()
+def plotPlayerShipAndCannon(text):
+    if (text == "S"):
         
-def plotPlayerCannon(text):
-    print("Hello")
-    
+        playerShip_PosY = 0 
+        
+        for i in range(9):
+            for playerShip in player.playerShips:
+                if ((i + 1) == playerShip["Pos"][1]):
+                    playerShip_PosY = playerShip["Pos"][1]
+                    ship_SpaceCount = (playerShip["Pos"][0] * 5) - 3
+                    
+            if ((i + 1) == playerShip_PosY): print("\n" + str(i + 1) + "|" + (" " * ship_SpaceCount) + text + (" " * (45 - ship_SpaceCount - 1)) + "|" + str(i + 1), end = (("    Ship Left: " + ((str(AI.shipLeft)) if (i == 0) else str(player.shipLeft))) if ((i == 0) or (i == 8)) else ""))
+            else: print("\n" + str(i + 1) + "|" + (" " * 45) + "|" + str(i + 1), end = (("    Ship Left: " + ((str(AI.shipLeft)) if (i == 0) else str(player.shipLeft))) if ((i == 0) or (i == 8)) else ""))
+            print()
+                
+    else:
+        
+        playerShip_PosY = 0
+        playerCannon_PosY = 0
+        
+        for i in range(9):
+            for playerShip in player.playerShips:
+                if ((i + 1) == playerShip["Pos"][1]):
+                    playerShip_PosY = playerShip["Pos"][1]
+                    ship_SpaceCount = (playerShip["Pos"][0] * 5) - 3
+                elif ((i + 1) == playerShip["Can"][1]):
+                    playerCannon_PosY = playerShip["Can"][1]
+                    cannon_SpaceCount = (playerShip["Can"][0] * 5) - 3
+                    
+            if ((i + 1) == playerShip_PosY): print("\n" + str(i + 1) + "|" + (" " * ship_SpaceCount) + "S" + (" " * (45 - ship_SpaceCount - 1)) + "|" + str(i + 1), end = (("    Ship Left: " + ((str(AI.shipLeft)) if (i == 0) else str(player.shipLeft))) if ((i == 0) or (i == 8)) else ""))
+            elif ((i + 1) == playerCannon_PosY): print("\n" + str(i + 1) + "|" + (" " * cannon_SpaceCount) + text + (" " * (45 - cannon_SpaceCount - 1)) + "|" + str(i + 1), end = (("    Ship Left: " + ((str(AI.shipLeft)) if (i == 0) else str(player.shipLeft))) if ((i == 0) or (i == 8)) else ""))
+            else: print("\n" + str(i + 1) + "|" + (" " * 45) + "|" + str(i + 1), end = (("    Ship Left: " + ((str(AI.shipLeft)) if (i == 0) else str(player.shipLeft))) if ((i == 0) or (i == 8)) else ""))
+            print()
 
 def generateMap(text):
-    print("\n----1----2----3----4----5----6----7----8----9----    BOT Wins: " + str(AI_Win))
+    print("\n----1----2----3----4----5----6----7----8----9----    BOT Wins: " + str(AI.win))
     
-    if (text == "S"): plotPlayerShip(text)
-    else: plotPlayerShip(text); plotPlayerCannon(text)
+    if (text == "S"): plotPlayerShipAndCannon(text)
+    else: plotPlayerShipAndCannon(text)
         
-    print("\n----1----2----3----4----5----6----7----8----9----    Player Wins: " + str(playerWin) + "\n")
+    print("\n----1----2----3----4----5----6----7----8----9----    Player Wins: " + str(player.win) + "\n")
