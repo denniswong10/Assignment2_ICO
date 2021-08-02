@@ -69,10 +69,13 @@ def playerShipPosXY(isQuit):
 
 def playerCannonPosXY(x, y):
     'When player input defined'
+    import AI
+    
+    print ("The player cannon fire at (" + x + ", " + y + ")")
     
     'Check if any of the AI ship is equal to the player input'
-    '    Update AI ship remain'
+    if (AI.AI_ship1['Pos'][0] == x and AI.AI_ship1['Pos'][1] == y):
+        AI.shipLeft -= 1
         
     'Otherwise skip this step'
-    '    Goto AI cannon fire'
 >>>>>>> Stashed changes

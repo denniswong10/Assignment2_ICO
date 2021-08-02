@@ -94,34 +94,32 @@ def main():
         
         print("Welcome To Battle-Ship War Game")
         
+	# Transition Stage
         playerPosXY()
         if (isQuit == True): break
         AI_PosXY()
         battleGround.generateMap()
         
         break
+
+    # Gameplay Stage
+    while (True):
         
+        'Player Turn'
+        playerSetPositionX = input("Set Cannon Fire Position (X): ")
+        playerSetPositionY = input("Set Cannon Fire Position (Y): ")
+        player.playerCannonXY(playerSetPositionX, playerSetPositionY)
+        
+        if (AI.shipLeft != 0): break
+    
+        'AI Turn'
+        import random
+        AI.CannonPosXY(random.randrange(1, 10), random.range(1, 10))
+        
+        if (player.shipLeft != 0): break
+        
+
     if (player.shipLeft == 0): print("\nYou Lost :(")
     elif (AI.shipLeft == 0): print("\nYou Won!")
     
 main()
-
-def CheckForShipRemain():
-    'If any of the player remain ship is 0'
-    '   Display win to the player have won'
-    
-    'Otherwise the game will continue'
-    
-'Break loop when any ship remain is 0'
-while (AI.shipLeft != 0 or player.shipLeft != 0):
-    'Call the player cannon fire first and check for ship remain'
-    CheckForShipRemain()
-    'Call the AI cannon fire then go back to ship remain'
-    CheckForShipRemain()
-    
-'Display win message!'
-if (AI.shipLeft == 0): 
-    print("Player Win!")
-    
-elif (player.shipLeft == 0): 
-    print("AI Win!")
